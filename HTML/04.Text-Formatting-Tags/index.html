@@ -3,20 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inline Vs Block Level Elements</title>
+    <title>Form</title>
   </head>
   <body>
-    <h1>Inline Vs Block Level Elements</h1>
+    <h1>Forms in HTML</h1>
 
-    <!--  Block Level Elements -->
-    <h1>Welcome</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. A, repellendus?
-    </p>
-
-    <!--  In Line Elements -->
-    <a href="">LogIn</a>
-    <a href="">Register</a>
-    <b>This is inline El</b>
+    <form>
+      <input type="text" placeholder="Name" /><br />
+      <label for="">Enter Email</label>
+      <input type="email" placeholder="Email" /><br />
+      <input type="password" placeholder="Password" />
+      <div>
+        <label for="age">Enter Age</label>
+        <input type="number" placeholder="Age" />
+      </div>
+      <button>Submit</button>
+    </form>
   </body>
 </html>
