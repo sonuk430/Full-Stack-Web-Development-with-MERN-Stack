@@ -21,6 +21,5 @@ A lightweight Node.js API that provides detailed system information such as CPU 
 ### 1. Clone the Project
 
 ```bash
-git clone https://github.com/your/repo.git
-cd system-view-api
+git clone https://github.com/sonuk430/Full-Stack-Web-Development-with-MERN-Stack.git
 ```
