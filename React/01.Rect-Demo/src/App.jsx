@@ -1,12 +1,40 @@
-import Cart from "./components/Cart";
-import Person from "./components/Person";
-import Products from "./components/Products";
+// const ValidPassword = () => <h1>Valid Password</h1>;
+// const InvalidPassword = () => <h1>Invalid Password</h1>;
+
+// const Password = ({ isValid }) => {
+//   if (isValid) {
+//     return <ValidPassword />;
+//   }
+//   return <InvalidPassword />;
+
+//   return isValid ? <ValidPassword /> : <InvalidPassword />;
+// };
+
+// Cart Components
+
+const Cart = () => {
+  const items = ["WireLess Earbuds", "New SSD", "Haddie", "Phone"];
+
+  return (
+    <div>
+      <h1>Cart 🛒</h1>
+      {items.length > 0 && <h2>You have {items.length} items in your Cart</h2>}
+
+      <ul>
+        <h2>Products</h2>
+
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const App = () => {
   return (
     <div>
-      <Person name="Sonu" age={28} />
-      <Products product="Apple" price={20000} />
+      {/* <Password isValid={true} /> */}
       <Cart />
     </div>
   );
