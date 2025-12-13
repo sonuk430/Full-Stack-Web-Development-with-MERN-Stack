@@ -1,41 +1,25 @@
-// const ValidPassword = () => <h1>Valid Password</h1>;
-// const InvalidPassword = () => <h1>Invalid Password</h1>;
-
-// const Password = ({ isValid }) => {
-//   if (isValid) {
-//     return <ValidPassword />;
-//   }
-//   return <InvalidPassword />;
-
-//   return isValid ? <ValidPassword /> : <InvalidPassword />;
-// };
-
-// Cart Components
-
-const Cart = () => {
-  const items = ["WireLess Earbuds", "New SSD", "Haddie", "Phone"];
-
-  return (
-    <div>
-      <h1>Cart 🛒</h1>
-      {items.length > 0 && <h2>You have {items.length} items in your Cart</h2>}
-
-      <ul>
-        <h2>Products</h2>
-
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+import { useState } from "react";
 
 const App = () => {
+  const [friend, setFriend] = useState(["Sonu", "Kumar"]);
+
+  const addNewFriend = () => {
+    setFriend([...friend, "Bulbul"]);
+  };
+  const removeFriend = () => {
+    setFriend(friend.filter((f) => f !== "Kumar"));
+  };
+
   return (
     <div>
-      {/* <Password isValid={true} /> */}
-      <Cart />
+      <ul>
+        {friend.map((f, idx) => (
+          <li key={idx}>{f}</li>
+        ))}
+      </ul>
+
+      <button onClick={addNewFriend}>Add New Friend</button>
+      <button onClick={removeFriend}>Add New Friend</button>
     </div>
   );
 };
