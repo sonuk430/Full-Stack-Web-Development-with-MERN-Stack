@@ -20,6 +20,7 @@ mongoose
 const courseSchema = new mongoose.Schema(
   {
     title: String,
+    student: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }],
   },
   { timestamps: true }
 );
@@ -30,24 +31,12 @@ const Course = mongoose.model("Course", courseSchema);
 const studentSchema = new mongoose.Schema(
   {
     name: String,
+    course: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
   },
   { timestamps: true }
 );
 
 const Student = mongoose.model("Student", studentSchema);
-
-//* enrollment Schema
-const enrollmentSchema = new mongoose.Schema(
-  {
-    student: { type: mongoose.Schema.Types.ObjectId, ref: "Student" },
-    course: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
-    enrolledAt: { type: Date, default: Date.now() },
-    grade: String,
-    status: { type: String, enum: ["active", "completed", "dropped"] },
-  },
-  { timestamps: true }
-);
-const Enrollment = mongoose.model("Enrollment", enrollmentSchema);
 
 //* Create some course
 // Course.create({
@@ -63,6 +52,7 @@ const Enrollment = mongoose.model("Enrollment", enrollmentSchema);
 //* Create Student and enroll courses
 // Student.create({
 //   name: "Ram",
+//   course: ["694ea90cdb9722a5c9608b2f", "694ea926a6735f90fd6ada38"],
 // })
 //   .then((student) => {
 //     console.log(student);
@@ -71,39 +61,40 @@ const Enrollment = mongoose.model("Enrollment", enrollmentSchema);
 //     console.log(err);
 //   });
 
-//! Enroll the student in the course (with extra info)
-// Enrollment.create({
-//   student: "694eb1c4cee9f10b945dad5c",
-//   course: "694eb19825e51463bda850e0",
-//   grade: "A",
-//   status: "active",
-// })
-//   .then((enrollment) => {
-//     console.log(enrollment);
+//* Update courses to reference the student
+// Course.updateMany(
+//   {
+//     _id: { $in: ["694ea90cdb9722a5c9608b2f", "694ea926a6735f90fd6ada38"] },
+//   },
+//   {
+//     $push: { student: "694eabc7ecbf942a17df0ef0" },
+//   }
+// )
+//   .then((course) => {
+//     console.log(course);
 //   })
 //   .catch((err) => {
 //     console.log(err);
 //   });
 
-//! Get all enrollments for a student ( with full course info)
-// Enrollment.find({ student: "694eb1c4cee9f10b945dad5c" })
-//   .populate("course")
-//   .populate("student")
-//   .then((enrollment) => {
-//     console.log(enrollment);
+//! Get student and their enrolled course
+// Student.findById("694eabc7ecbf942a17df0ef0")
+//   .populate("course", "title") // Only show title
+//   .then((course) => {
+//     console.log(course);
 //   })
 //   .catch((err) => {
-//     console.log(err);
+//     console.lpg(err);
 //   });
 
-Enrollment.find({ course: "694eb19825e51463bda850e0" })
-  .populate("course")
-  .populate("student")
-  .then((enrollment) => {
-    console.log(enrollment);
+//! Get course and its students:
+Course.findById("694ea90cdb9722a5c9608b2f")
+  .populate("student", "name") // Only show name
+  .then((student) => {
+    console.log(student);
   })
   .catch((err) => {
-    console.log(err);
+    console.lpg(err);
   });
 
 //! Start the server
