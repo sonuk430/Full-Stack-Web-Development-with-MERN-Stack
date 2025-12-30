@@ -33,3 +33,38 @@ The main goal of this project is to implement **role-based authentication**, **j
 - Mongoose
 - JWT Authentication
 - bcrypt (Password Hashing)
+
+# 🔗 Job Portal – Database Relationship Diagram (ERD)
+
+## 📌 Overview
+
+Is document me **Job Portal Backend** ke teen main schemas ka **relationship (relation)** explain kiya gaya hai:
+
+- User
+- Job
+- Application
+
+Ye design **real-world scalable architecture** follow karta hai aur **many-to-many relationship** ko properly handle karta hai.
+
+---
+
+## 🧩 Schemas Involved
+
+### 👤 User Schema
+
+- User register/login karta hai
+- Ek user multiple jobs par apply kar sakta hai
+
+### 💼 Job Schema
+
+- Admin job post karta hai
+- Ek job par multiple users apply kar sakte hain
+
+### 📝 Application Schema
+
+- User aur Job ke beech ka **bridge (junction) schema**
+- Apply ki details yahin store hoti hain
+
+---
+
+## 🔗 Entity Relationship Diagram (ER Diagram)
