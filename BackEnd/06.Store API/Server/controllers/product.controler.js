@@ -1,11 +1,46 @@
 const Product = require("../models/product.model");
 
 const getAllProductsStatic = async (req, res) => {
-  res.status(200).json({ msg: "Products testing route" });
+  try {
+    // const products = await Product.find({});
+    const products = await Product.find({}).select("name price");
+    res.status(200).json({ totalProducts: products.length, products });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
 };
 
 const getAllProducts = async (req, res) => {
-  res.status(200).json({ msg: "Products route" });
+  try {
+    const { featured, company, name, sort } = req.query;
+    const queryObject = {};
+
+    if (featured) {
+      queryObject.featured = featured === "true" ? true : false;
+    }
+
+    if (company) {
+      queryObject.company = company;
+    }
+
+    if (name) {
+      queryObject.name = { $regex: name, $options: "i" };
+    }
+    let result = Product.find(queryObject);
+    if (sort) {
+      console.log(sort);
+      const sortList = sort.split(",").join(" ");
+      result = result.sort(sortList);
+      // products = products.sort();
+    } else {
+      result = result.sort("createdAt");
+    }
+
+    const products = await result;
+    res.status(200).json({ totalProducts: products.length, products });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
 };
 //! New Product created
 const addProducts = async (req, res) => {
