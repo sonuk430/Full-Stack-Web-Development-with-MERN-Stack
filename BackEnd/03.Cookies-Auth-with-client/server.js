@@ -7,12 +7,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //! Set the view engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 // Simulated DataBase of users
 const users = [
-  { username: "kumar", password: 123, role: "admin" },
-  { username: "bulbul", password: 456, role: "user" },
+  { username: "John", password: 123, role: "admin" },
+  { username: "Sarah", password: 456, role: "user" },
 ];
 
 // Home Route
@@ -24,7 +23,18 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 // Login Route logic
-app.post("/login", (req, res) => {});
+app.post("/login", (req, res) => {
+  //! Find the user login details
+  console.log(req.body);
+  // const userFound = users.find((user) => {
+  //   const { username, password } = req.body;
+  //   return user.username === username && user.password === password;
+  // });
+  // console.log(userFound);
+  //! Create some cookies(cookie)
+  //! render the user dashBoard
+  //! Redirect the user to login page
+});
 
 // DashBoard Route
 app.get("/dashboard", (req, res) => {
