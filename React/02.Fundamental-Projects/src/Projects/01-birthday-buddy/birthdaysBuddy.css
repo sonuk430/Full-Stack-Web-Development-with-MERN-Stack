@@ -1,0 +1,11 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.b-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(22, 49, 49);
+}
