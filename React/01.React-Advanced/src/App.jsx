@@ -1,10 +1,4 @@
-import {
-  ControlledInputs,
-  UserChallenge,
-  MultipleInputs,
-  OtherInputs,
-  UncontrolledInputs,
-} from "./concepts/04-forms";
+import { FetchData, ToggleExample } from "./concepts/06-custom-hooks";
 
 function App() {
   return (
@@ -14,7 +8,8 @@ function App() {
       {/* <UserChallenge /> */}
       {/* <MultipleInputs /> */}
       {/* <OtherInputs /> */}
-      <UncontrolledInputs />
+      {/* <UncontrolledInputs /> */}/{/* <ToggleExample /> */}
+      <FetchData />
     </div>
   );
 }
