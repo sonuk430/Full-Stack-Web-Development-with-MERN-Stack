@@ -1,11 +1,17 @@
 import Title from "./components/Title";
-import { FirstRequest, Headers } from "./examples";
-
+import {
+  CustomInstance,
+  FirstRequest,
+  GlobalInstance,
+  Headers,
+  PostRequest,
+} from "./examples";
+import "./axios/global";
 const App = () => {
   return (
     <div>
       <Title />
-      <Headers />
+      <CustomInstance />
     </div>
   );
 };
