@@ -1,4 +1,5 @@
 import { FetchData, ToggleExample } from "./concepts/06-custom-hooks";
+import { NavBar } from "./concepts/07-Context-API";
 
 function App() {
   return (
@@ -8,8 +9,9 @@ function App() {
       {/* <UserChallenge /> */}
       {/* <MultipleInputs /> */}
       {/* <OtherInputs /> */}
-      {/* <UncontrolledInputs /> */}/{/* <ToggleExample /> */}
-      <FetchData />
+      {/* <UncontrolledInputs /> */}
+      {/* <ToggleExample /> */}
+      <NavBar />
     </div>
   );
 }
