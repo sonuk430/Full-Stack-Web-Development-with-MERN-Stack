@@ -1,5 +1,5 @@
 import "animate.css";
-import { Badge } from "antd";
+import { Badge, Card, Select, Tag } from "antd";
 import { Plus } from "lucide-react";
 
 const App = () => {
@@ -16,11 +16,35 @@ const App = () => {
             text="Highest"
             className="!bg-gradient-to-br !from-rose-500 !via-pink-500 !to-rose-500 !font-medium "
           />
-          <div className="bg-white  rounded-lg h-full overflow-auto p-6">
-            <button className="items-center hover:scale-105 transition-transform duration-300 text-sm py-1.5 px-3 rounded bg-gradient-to-tr from -blue-600 via-blue-500 to-blue-600 text-white flex gap-1 font-medium">
+          <div className="bg-white  rounded-lg h-full overflow-auto p-6 space-y-8">
+            <button className="focus:shadow-lg items-center hover:scale-105 transition-transform duration-300 text-sm py-1.5 px-3 rounded bg-gradient-to-tr from -blue-600 via-blue-600 to-blue-600 text-white flex gap-1 font-medium">
               <Plus className="w-4 h-4" />
               Add Tasks
             </button>
+            <div className="flex flex-col gap-8">
+              {Array(10)
+                .fill(0)
+                .map((item, index) => {
+                  return (
+                    <Card hoverable>
+                      <Card.Meta
+                        title="Upload new video on youtube"
+                        description="dolores tenetur culpa ut at illo aspernatur et doloribus magni rem voluptas, necessitatibus doloremque quisquam vel fugiat. Voluptate ex molestiae soluta!"
+                      />
+                      <div className="mt-4">
+                        <Tag>Pending</Tag>
+                        <Tag className="!bg-rose-500 !border-rose-500 !text-white ">
+                          Delate
+                        </Tag>
+
+                        <Select size="small">
+                          <Option value="pending">Pending</Option>
+                        </Select>
+                      </div>
+                    </Card>
+                  );
+                })}
+            </div>
           </div>
         </div>
         {/*  */}
