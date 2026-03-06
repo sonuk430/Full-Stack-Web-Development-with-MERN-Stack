@@ -1,9 +1,11 @@
+require("dotenv").config();
 const dbConnection = require("./db/db");
 const express = require("express");
 const authRouter = require("./routes/authRouter");
 const josRouter = require("./routes/jobRouter");
 
 const app = express();
+app.use(express.json());
 
 // Routes
 app.use("/api/vi/auth", authRouter);
@@ -12,7 +14,7 @@ app.use("/api/vi/jobs", josRouter);
 //  DB connection
 dbConnection()
   .then(() => {
-    app.listen(3000, () => {
+    app.listen(8080, () => {
       console.log(`Server is Start...`);
     });
   })

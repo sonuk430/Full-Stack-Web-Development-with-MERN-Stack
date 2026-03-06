@@ -1,6 +1,42 @@
-const register = async () => {
-  res.send("register user");
+const User = require("../models/userModel");
+
+const register = async (req, res) => {
+  const { name, email, password } = req.body;
+  if ((!name, !email, !password)) {
+    return res.json({ message: "All Filed are required" });
+  }
+  const user = await User.create({ ...req.body });
+  const token = user.createJWT();
+  res.status(201).json({ user: { name: user.name }, token });
 };
+
+// const register = async (req, res) => {
+//   const { name, email, password } = req.body;
+//   if ((!name, !email, !password)) {
+//     return res.json({ message: "All Filed are required" });
+//   }
+//   const user = await User.create({ ...req.body });
+//   const token = jwt.sign(
+//     { userId: user._id, username: user.name },
+//     "jwtSecret",
+//     { expiresIn: "30d" },
+//   );
+//   res.status(201).json({ user: { name: user.name }, token });
+// };
+
+// const register = async (req, res) => {
+//   const { name, email, password } = req.body;
+
+//   const salt = await bcrypt.genSalt(10);
+//   const hashPassword = await bcrypt.hash(password, salt);
+//   const tempUser = { name, email, password: hashPassword };
+
+//   if ((!name, !email, !password)) {
+//     return res.json({ message: "All Filed are required" });
+//   }
+//   const user = await User.create({ ...tempUser });
+//   res.status(201).json({ user });
+// };
 
 const login = async () => {
   res.send("login user");
