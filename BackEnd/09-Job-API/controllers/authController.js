@@ -58,7 +58,9 @@ const login = async (req, res) => {
   // Compare password
 
   const token = user.createJWT();
-  res.status(200).json({ user: { name: user.name }, token });
+  res
+    .status(200)
+    .json({ message: "Login Successfully", user: { name: user.name }, token });
 };
 
 module.exports = { register, login };
