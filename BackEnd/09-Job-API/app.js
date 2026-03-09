@@ -9,8 +9,8 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use("/api/vi/auth", authRouter);
-app.use("/api/vi/jobs", authenticateUser, josRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/jobs", authenticateUser, josRouter);
 
 //  DB connection
 dbConnection()
