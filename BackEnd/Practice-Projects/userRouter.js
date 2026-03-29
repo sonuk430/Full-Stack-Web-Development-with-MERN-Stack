@@ -1,19 +1,8 @@
 const express = require("express");
-const User = require("./userModel");
-const router = express.Router();
-const bcrypt = require("bcryptjs");
+const userController = require("./userController");
 
-router.post("/register", async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!username || !email || !password) {
-    return res.json({ message: "Username,email & password are required" });
-  }
+const userRouter = express.Router();
 
-  const salt = await bcrypt.genSalt(10);
-  const hashPassword = await bcrypt.hash(password, salt);
-  const tempUser = { username, email, password: hashPassword };
-  const user = await User.create({ ...tempUser });
-  res.status(201).json({ message: user });
-});
+userRouter.post("/register", userController.register);
 
-module.exports = router;
+module.exports = userRouter;
